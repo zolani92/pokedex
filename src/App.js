@@ -5,6 +5,7 @@ import Loading from "./components/common/loading";
 import NavBar from "./components/common/navBar";
 import Pokemon from "./model/Pokemon";
 import { pokemon_list } from "./assets/pokeList";
+import axios from "axios";
 
 class App extends Component {
   state = {
@@ -13,15 +14,19 @@ class App extends Component {
     loading: false
   };
 
-  handleDisplay = pokemonId => {
-    this.setState({ loading: true });
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ selectedPokemon: new Pokemon(data) });
-      })
-      .catch(err => console.log(err))
-      .finally(() => this.setState({ loading: false }));
+  handleDisplay = async pokemonId => {
+    try {
+      this.setState({ loading: true });
+      const [pokemon, pokemonDetails] = await Promise.all([
+        axios(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`),
+        axios(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`)
+      ]);
+      this.setState({ selectedPokemon: new Pokemon(pokemon, pokemonDetails) });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      this.setState({ loading: false });
+    }
   };
 
   handleDelete = () => {
