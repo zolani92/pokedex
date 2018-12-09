@@ -58,7 +58,14 @@ class App extends Component {
   };
 
   handleLike = () => {
-    console.log("Like pokemon" + this.state.selectedPokemonId);
+    const pokemonToDisplay = this.findPokemonToDisplay();
+    const pokemons = [...this.state.pokemons];
+    const index = this.state.pokemons.indexOf(this.findPokemonToDisplay());
+    console.log("index " + index);
+    const pokemonToLike = { ...pokemons[index] };
+    pokemonToLike.likesCount++;
+    pokemons[index] = pokemonToLike;
+    this.setState({ pokemons });
   };
 
   findPokemonToDisplay = () => {
