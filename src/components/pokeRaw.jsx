@@ -9,7 +9,11 @@ class PokeRaw extends Component {
         <td>{name}</td>
         <td>{type}</td>
         <td>{likesCount}</td>
-        <td>Display</td>
+        <td>
+          <button className="btn btn-primary" onClick={this.props.onDisplay}>
+            Display
+          </button>
+        </td>
       </tr>
     );
   }

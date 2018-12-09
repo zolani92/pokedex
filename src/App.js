@@ -33,6 +33,19 @@ class App extends Component {
     ],
     selectedPokemonId: 4
   };
+
+  handleDisplay = pokemonId => {
+    this.setState({ selectedPokemonId: pokemonId });
+  };
+
+  findPokemonToDisplay = () => {
+    return {
+      ...this.state.pokemons.filter(
+        pokemon => pokemon.id === this.state.selectedPokemonId
+      )[0]
+    };
+  };
+
   render() {
     const pokemons = this.state.pokemons;
     const navBarText = `${pokemons.length} Pokemon in the Pokedex left!`;
@@ -43,10 +56,10 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col">
-              <PokeTable pokemons={pokemons} />
+              <PokeTable pokemons={pokemons} onDisplay={this.handleDisplay} />
             </div>
             <div className="col">
-              <PokePage pokemon={pokemons[1]} />
+              <PokePage pokemon={this.findPokemonToDisplay()} />
             </div>
           </div>
         </div>

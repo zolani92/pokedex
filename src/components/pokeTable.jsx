@@ -4,7 +4,11 @@ import PokeRaw from "./pokeRaw";
 class PokeTable extends Component {
   render() {
     let pokemonRows = this.props.pokemons.map(pokemon => (
-      <PokeRaw key={pokemon.id} pokemon={pokemon} />
+      <PokeRaw
+        key={pokemon.id}
+        pokemon={pokemon}
+        onDisplay={() => this.props.onDisplay(pokemon.id)}
+      />
     ));
 
     return (
