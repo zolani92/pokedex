@@ -20,7 +20,7 @@ const PokePage = ({ pokemon, onDelete, onLike }) => {
         />
         <div className="card-body">
           <h5 className="card-title">
-            #{pokemon.id}: {pokemon.name} ({pokemon.type})
+            #{pokemon.id}: {pokemon.name} ({pokemon.types})
           </h5>
           <p className="card-text">{pokemon.description}</p>
           <button className="btn btn-danger m-2" onClick={onDelete}>
