@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class PokePage extends Component {
   render() {
-    const { name, description, image } = this.props.pokemon;
+    const { id, name, type, description, image } = this.props.pokemon;
 
     return (
       <div
@@ -21,8 +21,16 @@ class PokePage extends Component {
           }}
         />
         <div className="card-body">
-          <h5 className="card-title">{name}</h5>
+          <h5 className="card-title">
+            #{id}: {name} ({type})
+          </h5>
           <p className="card-text">{description}</p>
+          <button className="btn btn-danger m-2" onClick={this.props.onDelete}>
+            Delete
+          </button>
+          <button className="btn btn-info" onClick={this.props.onLike}>
+            Like
+          </button>
         </div>
       </div>
     );

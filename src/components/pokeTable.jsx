@@ -16,7 +16,6 @@ class PokeTable extends Component {
         <thead>
           <tr>
             <th scope="col">Name</th>
-            <th scope="col">Type</th>
             <th scope="col">Likes</th>
             <th scope="col">Display</th>
           </tr>

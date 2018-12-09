@@ -50,6 +50,14 @@ class App extends Component {
     this.setState({ selectedPokemonId: pokemonId });
   };
 
+  handleDelete = () => {
+    console.log("Delete pokemon" + this.state.selectedPokemonId);
+  };
+
+  handleLike = () => {
+    console.log("Like pokemon" + this.state.selectedPokemonId);
+  };
+
   findPokemonToDisplay = () => {
     return {
       ...this.state.pokemons.filter(
@@ -71,7 +79,11 @@ class App extends Component {
               <PokeTable pokemons={pokemons} onDisplay={this.handleDisplay} />
             </div>
             <div className="col">
-              <PokePage pokemon={this.findPokemonToDisplay()} />
+              <PokePage
+                pokemon={this.findPokemonToDisplay()}
+                onDelete={this.handleDelete}
+                onLike={this.handleLike}
+              />
             </div>
           </div>
         </div>
