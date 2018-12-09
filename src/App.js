@@ -44,14 +44,22 @@ class App extends Component {
       )[0]
     };
     pokemonToLike.likesCount = (pokemonToLike.likesCount || 0) + 1;
-    console.log(pokemonToLike);
     pokemons.push(pokemonToLike);
+    this.sortByLikesCountDesc(pokemons);
     this.setState({ pokemons });
   };
 
+  sortByLikesCountDesc(pokemons) {
+    pokemons.sort(
+      (pokemon1, pokemon2) =>
+        (pokemon2.likesCount || 0) - (pokemon1.likesCount || 0)
+    );
+  }
+
   render() {
-    const pokemons = this.state.pokemons;
-    const navBarText = `${pokemons.length} Pokemon in the Pokedex left!`;
+    const navBarText = `${
+      this.state.pokemons.length
+    } Pokemon in the Pokedex left!`;
 
     return (
       <div>
@@ -59,7 +67,10 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col">
-              <PokeTable pokemons={pokemons} onDisplay={this.handleDisplay} />
+              <PokeTable
+                pokemons={this.state.pokemons}
+                onDisplay={this.handleDisplay}
+              />
             </div>
             <div className="col">
               {this.state.loading ? (
