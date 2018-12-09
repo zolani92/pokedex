@@ -12,8 +12,8 @@ class PokeTable extends Component {
     ));
 
     return (
-      <table className="table">
-        <thead>
+      <table className="table table-hover fixed_header">
+        <thead className="thead-light">
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
