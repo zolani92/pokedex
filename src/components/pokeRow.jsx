@@ -12,7 +12,7 @@ class PokeRow extends Component {
         <td>{likesCount || 0}</td>
         <td>
           <button
-            className="btn btn-primary"
+            className="btn btn-secondary"
             onClick={this.props.onDisplay}
             disabled={this.props.isDisabled}
           >
