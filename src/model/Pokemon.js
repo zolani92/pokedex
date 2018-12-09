@@ -1,10 +1,20 @@
 export default class Pokemon {
-  constructor(data) {
-    this.id = data.id;
-    this.name = data.name;
-    this.image = { uri: data.sprites.front_default };
-    this.types = data.types.map(type => type.type.name);
-    this.description = data.description;
+  constructor(pokemon, pokemonDetails) {
+    const { id, name, sprites, types } = pokemon.data;
+
+    const description = pokemonDetails.data.flavor_text_entries
+      .filter(
+        description =>
+          description.language.name === "en" &&
+          description.version.url === "https://pokeapi.co/api/v2/version/1/"
+      )
+      .map(description => description.flavor_text);
+
+    this.id = id;
+    this.name = name;
+    this.image = { uri: sprites.front_default };
+    this.types = types.map(type => type.type.name);
+    this.description = description;
     this.likesCount = 0;
   }
 }
