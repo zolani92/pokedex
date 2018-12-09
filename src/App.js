@@ -10,24 +10,36 @@ class App extends Component {
         id: 25,
         name: "Pikachu",
         type: "Electrik",
+        description: "This is a description for Pikachu",
+        image:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
         likesCount: 26
       },
       {
         id: 4,
         name: "Charmander",
         type: "Fire",
+        description: "This is a description for Charmander",
+        image:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
         likesCount: 11
       },
       {
         id: 7,
         name: "Squirtle",
         type: "Water",
+        description: "This is a description for Squirtle",
+        image:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
         likesCount: 12
       },
       {
         id: 1,
         name: "Bulbasaur",
         type: "Grass",
+        description: "This is a description for Bulbasaur",
+        image:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
         likesCount: 2
       }
     ],
