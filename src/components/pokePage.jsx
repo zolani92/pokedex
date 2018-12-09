@@ -11,7 +11,7 @@ const PokePage = ({ pokemon, onDelete, onLike }) => {
       >
         <img
           className="card-img-top"
-          src={pokemon.image}
+          src={pokemon.image.uri}
           alt="Pokemon caption"
           style={{
             width: 200,

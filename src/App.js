@@ -26,20 +26,14 @@ class App extends Component {
 
   handleDelete = () => {
     const pokemons = this.state.pokemons.filter(
-      pokemon => pokemon.id !== this.state.selectedPokemonId
+      pokemon => pokemon.id !== this.state.selectedPokemon.id
     );
     this.setState({ pokemons });
+    this.setState({ selectedPokemon: undefined });
   };
 
   handleLike = () => {
-    const pokemonToDisplay = this.findPokemonToDisplay();
-    const pokemons = [...this.state.pokemons];
-    const index = this.state.pokemons.indexOf(this.findPokemonToDisplay());
-    console.log("index " + index);
-    const pokemonToLike = { ...pokemons[index] };
-    pokemonToLike.likesCount++;
-    pokemons[index] = pokemonToLike;
-    this.setState({ pokemons });
+    // TODO
   };
 
   render() {
