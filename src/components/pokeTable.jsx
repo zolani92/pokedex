@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PokeRaw from "./pokeRaw";
+import PokeRaw from "./pokeRow";
 
 class PokeTable extends Component {
   render() {
@@ -15,7 +15,9 @@ class PokeTable extends Component {
       <table className="table">
         <thead>
           <tr>
+            <th scope="col">Id</th>
             <th scope="col">Name</th>
+            <th scope="col">Types</th>
             <th scope="col">Likes</th>
             <th scope="col">Display</th>
           </tr>
