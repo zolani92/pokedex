@@ -1,53 +1,27 @@
 import React, { Component } from "react";
 import PokeTable from "./components/pokeTable";
 import PokePage from "./components/pokePage";
+import Loading from "./components/common/loading";
 import NavBar from "./components/common/navBar";
+import Pokemon from "./model/Pokemon";
+import { pokemon_list } from "./assets/pokeList";
 
 class App extends Component {
   state = {
-    pokemons: [
-      {
-        id: 25,
-        name: "Pikachu",
-        type: "Electrik",
-        description: "This is a description for Pikachu",
-        image:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-        likesCount: 26
-      },
-      {
-        id: 4,
-        name: "Charmander",
-        type: "Fire",
-        description: "This is a description for Charmander",
-        image:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-        likesCount: 11
-      },
-      {
-        id: 7,
-        name: "Squirtle",
-        type: "Water",
-        description: "This is a description for Squirtle",
-        image:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
-        likesCount: 12
-      },
-      {
-        id: 1,
-        name: "Bulbasaur",
-        type: "Grass",
-        description: "This is a description for Bulbasaur",
-        image:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-        likesCount: 2
-      }
-    ],
-    selectedPokemonId: 4
+    pokemons: pokemon_list,
+    selectedPokemon: undefined,
+    loading: false
   };
 
   handleDisplay = pokemonId => {
-    this.setState({ selectedPokemonId: pokemonId });
+    this.setState({ loading: true });
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ selectedPokemon: new Pokemon(data) });
+      })
+      .catch(err => console.log(err))
+      .finally(() => this.setState({ loading: false }));
   };
 
   handleDelete = () => {
@@ -68,14 +42,6 @@ class App extends Component {
     this.setState({ pokemons });
   };
 
-  findPokemonToDisplay = () => {
-    return {
-      ...this.state.pokemons.filter(
-        pokemon => pokemon.id === this.state.selectedPokemonId
-      )[0]
-    };
-  };
-
   render() {
     const pokemons = this.state.pokemons;
     const navBarText = `${pokemons.length} Pokemon in the Pokedex left!`;
@@ -89,11 +55,15 @@ class App extends Component {
               <PokeTable pokemons={pokemons} onDisplay={this.handleDisplay} />
             </div>
             <div className="col">
-              <PokePage
-                pokemon={this.findPokemonToDisplay()}
-                onDelete={this.handleDelete}
-                onLike={this.handleLike}
-              />
+              {this.state.loading ? (
+                <Loading />
+              ) : (
+                <PokePage
+                  pokemon={this.state.selectedPokemon}
+                  onDelete={this.handleDelete}
+                  onLike={this.handleLike}
+                />
+              )}
             </div>
           </div>
         </div>
