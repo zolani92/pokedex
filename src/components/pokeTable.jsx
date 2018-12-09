@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import PokeRaw from "./pokeRow";
+import PokeRow from "./pokeRow";
 
 class PokeTable extends Component {
   render() {
     let pokemonRows = this.props.pokemons.map(pokemon => (
-      <PokeRaw
+      <PokeRow
         key={pokemon.id}
         pokemon={pokemon}
         onDisplay={() => this.props.onDisplay(pokemon.id)}
+        isDisabled={
+          this.props.selectedPokemon
+            ? this.props.selectedPokemon.id === pokemon.id
+            : false
+        }
       />
     ));
 

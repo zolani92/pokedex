@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class PokeRaw extends Component {
+class PokeRow extends Component {
   render() {
     const { id, name, types, likesCount } = this.props.pokemon;
 
@@ -11,7 +11,11 @@ class PokeRaw extends Component {
         <td>{types.join(", ")}</td>
         <td>{likesCount || 0}</td>
         <td>
-          <button className="btn btn-secondary" onClick={this.props.onDisplay}>
+          <button
+            className="btn btn-primary"
+            onClick={this.props.onDisplay}
+            disabled={this.props.isDisabled}
+          >
             Display
           </button>
         </td>
@@ -20,4 +24,4 @@ class PokeRaw extends Component {
   }
 }
 
-export default PokeRaw;
+export default PokeRow;

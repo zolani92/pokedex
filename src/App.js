@@ -74,6 +74,7 @@ class App extends Component {
             <div className="col">
               <PokeTable
                 pokemons={this.state.pokemons}
+                selectedPokemon={this.state.selectedPokemon}
                 onDisplay={this.handleDisplay}
               />
             </div>
