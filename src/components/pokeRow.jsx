@@ -11,7 +11,7 @@ class PokeRaw extends Component {
         <td>{types.join(", ")}</td>
         <td>{likesCount || 0}</td>
         <td>
-          <button className="btn btn-primary" onClick={this.props.onDisplay}>
+          <button className="btn btn-secondary" onClick={this.props.onDisplay}>
             Display
           </button>
         </td>
