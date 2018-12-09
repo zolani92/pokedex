@@ -51,7 +51,10 @@ class App extends Component {
   };
 
   handleDelete = () => {
-    console.log("Delete pokemon" + this.state.selectedPokemonId);
+    const pokemons = this.state.pokemons.filter(
+      pokemon => pokemon.id !== this.state.selectedPokemonId
+    );
+    this.setState({ pokemons });
   };
 
   handleLike = () => {
