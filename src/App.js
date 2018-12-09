@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PokeTable from "./components/pokeTable";
 import PokePage from "./components/pokePage";
+import NavBar from "./components/common/navBar";
 
 class App extends Component {
   state = {
@@ -33,14 +34,20 @@ class App extends Component {
     selectedPokemonId: 4
   };
   render() {
+    const pokemons = this.state.pokemons;
+    const navBarText = `${pokemons.length} Pokemon in the Pokedex left!`;
+
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <PokeTable pokemons={this.state.pokemons} />
-          </div>
-          <div className="col">
-            <PokePage pokemon={this.state.pokemons[1]} />
+      <div>
+        <NavBar text={navBarText} />
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <PokeTable pokemons={pokemons} />
+            </div>
+            <div className="col">
+              <PokePage pokemon={pokemons[1]} />
+            </div>
           </div>
         </div>
       </div>
