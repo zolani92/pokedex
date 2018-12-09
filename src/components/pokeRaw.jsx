@@ -7,7 +7,7 @@ class PokeRaw extends Component {
     return (
       <tr>
         <td>{name}</td>
-        <td>{likesCount}</td>
+        <td>{likesCount || 0}</td>
         <td>
           <button className="btn btn-primary" onClick={this.props.onDisplay}>
             Display

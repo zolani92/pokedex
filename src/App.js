@@ -33,7 +33,20 @@ class App extends Component {
   };
 
   handleLike = () => {
-    // TODO
+    const pokemons = [
+      ...this.state.pokemons.filter(
+        pokemon => pokemon.id !== this.state.selectedPokemon.id
+      )
+    ];
+    const pokemonToLike = {
+      ...this.state.pokemons.filter(
+        pokemon => pokemon.id === this.state.selectedPokemon.id
+      )[0]
+    };
+    pokemonToLike.likesCount = (pokemonToLike.likesCount || 0) + 1;
+    console.log(pokemonToLike);
+    pokemons.push(pokemonToLike);
+    this.setState({ pokemons });
   };
 
   render() {
