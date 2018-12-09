@@ -1,5 +1,17 @@
 import React from "react";
 
+const formatTitleInfo = pokemon =>
+  `#${pokemon.id}: ${pokemon.name.toUpperCase()}`;
+
+const formatSubTitleInfo = pokemon => {
+  const { types, height, weight } = pokemon;
+  const typeTitle = types.length > 1 ? "Types" : "Type";
+
+  return `${typeTitle}: ${types.join(
+    ", "
+  )} - Height: ${height} - Weight: ${weight}`;
+};
+
 const PokePage = ({ pokemon, onDelete, onLike }) => {
   if (pokemon) {
     return (
@@ -19,12 +31,9 @@ const PokePage = ({ pokemon, onDelete, onLike }) => {
           }}
         />
         <div className="card-body">
-          <h5 className="card-title">
-            #{pokemon.id}: {pokemon.name.toUpperCase()}
-          </h5>
+          <h5 className="card-title">{formatTitleInfo(pokemon)}</h5>
           <h6 class="card-subtitle mb-2 text-muted">
-            Types: {pokemon.types.join(", ")} - Height: {pokemon.height} -
-            Weight: {pokemon.weight}
+            {formatSubTitleInfo(pokemon)}
           </h6>
           <p className="card-text">{pokemon.description}</p>
           <button className="btn btn-danger m-2" onClick={onDelete}>
