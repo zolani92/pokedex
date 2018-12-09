@@ -1,6 +1,6 @@
 export default class Pokemon {
   constructor(pokemon, pokemonDetails) {
-    const { id, name, sprites, types } = pokemon.data;
+    const { id, name, sprites, types, weight, height } = pokemon.data;
 
     const description = pokemonDetails.data.flavor_text_entries
       .filter(
@@ -15,8 +15,8 @@ export default class Pokemon {
     this.image = { uri: sprites.front_default };
     this.types = types.map(type => type.type.name);
     this.description = description;
-    this.weight = data.weight;
-    this.height = data.height;
+    this.weight = weight;
+    this.height = height;
     this.likesCount = 0;
   }
 }
