@@ -1,9 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 
-class PokePage extends Component {
-  render() {
-    const { id, name, type, description, image } = this.props.pokemon;
-
+const PokePage = ({ pokemon, onDelete, onLike }) => {
+  if (pokemon) {
     return (
       <div
         className="card border-light text-center"
@@ -13,7 +11,7 @@ class PokePage extends Component {
       >
         <img
           className="card-img-top"
-          src={image}
+          src={pokemon.image}
           alt="Pokemon caption"
           style={{
             width: 200,
@@ -22,19 +20,19 @@ class PokePage extends Component {
         />
         <div className="card-body">
           <h5 className="card-title">
-            #{id}: {name} ({type})
+            #{pokemon.id}: {pokemon.name} ({pokemon.type})
           </h5>
-          <p className="card-text">{description}</p>
-          <button className="btn btn-danger m-2" onClick={this.props.onDelete}>
+          <p className="card-text">{pokemon.description}</p>
+          <button className="btn btn-danger m-2" onClick={onDelete}>
             Delete
           </button>
-          <button className="btn btn-info" onClick={this.props.onLike}>
+          <button className="btn btn-info" onClick={onLike}>
             Like
           </button>
         </div>
       </div>
     );
-  }
-}
+  } else return false;
+};
 
 export default PokePage;
