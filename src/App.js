@@ -72,13 +72,6 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col">
-              <PokeTable
-                pokemons={this.state.pokemons}
-                selectedPokemon={this.state.selectedPokemon}
-                onDisplay={this.handleDisplay}
-              />
-            </div>
-            <div className="col">
               {this.state.loading ? (
                 <Loading />
               ) : (
@@ -88,6 +81,13 @@ class App extends Component {
                   onLike={this.handleLike}
                 />
               )}
+            </div>
+            <div className="col">
+              <PokeTable
+                pokemons={this.state.pokemons}
+                selectedPokemon={this.state.selectedPokemon}
+                onDisplay={this.handleDisplay}
+              />
             </div>
           </div>
         </div>
