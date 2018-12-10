@@ -1,27 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 
-class PokeRow extends Component {
-  render() {
-    const { id, name, types, likesCount } = this.props.pokemon;
-
-    return (
-      <tr>
-        <td>{id}</td>
-        <td>{name.toUpperCase()}</td>
-        <td>{types.join(", ")}</td>
-        <td>{likesCount || 0}</td>
-        <td>
-          <button
-            className="btn btn-secondary"
-            onClick={this.props.onDisplay}
-            disabled={this.props.isDisabled}
-          >
-            Display
-          </button>
-        </td>
-      </tr>
-    );
-  }
-}
+const PokeRow = ({
+  pokemon: { id, name, types, likesCount },
+  onDisplay,
+  isDisabled
+}) => {
+  return (
+    <tr>
+      <td>{id}</td>
+      <td>{name.toUpperCase()}</td>
+      <td>{types.join(", ")}</td>
+      <td>{likesCount || 0}</td>
+      <td>
+        <button
+          className="btn btn-secondary"
+          onClick={onDisplay}
+          disabled={isDisabled}
+        >
+          Display
+        </button>
+      </td>
+    </tr>
+  );
+};
 
 export default PokeRow;
