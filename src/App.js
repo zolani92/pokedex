@@ -55,10 +55,13 @@ class App extends Component {
   };
 
   sortByLikesCountDesc(pokemons) {
-    pokemons.sort(
-      (pokemon1, pokemon2) =>
-        (pokemon2.likesCount || 0) - (pokemon1.likesCount || 0)
-    );
+    pokemons.sort((pokemon1, pokemon2) => {
+      const diff = (pokemon2.likesCount || 0) - (pokemon1.likesCount || 0);
+      if (diff === 0) {
+        return pokemon1.id - pokemon2.id;
+      }
+      return diff;
+    });
   }
 
   render() {
