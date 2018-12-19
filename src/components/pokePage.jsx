@@ -16,7 +16,7 @@ const formatSubTitleInfo = pokemon => {
 const PokePage = ({ pokemon, onDelete, onLike }) => {
   if (pokemon) {
     const image = {
-      src: pokemon.image.uri,
+      src: pokemon.image,
       alt: pokemon.name,
       width: 200,
       height: 200

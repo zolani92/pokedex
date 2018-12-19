@@ -12,7 +12,7 @@ export default class Pokemon {
 
     this.id = id;
     this.name = name;
-    this.image = { uri: sprites.front_default };
+    this.image = sprites.front_default;
     this.types = types.map(type => type.type.name);
     this.description = description;
     this.weight = weight;
