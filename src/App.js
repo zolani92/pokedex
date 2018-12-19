@@ -16,8 +16,7 @@ class App extends Component {
         "When several of these POKéMON gather, their electricity could build and cause lightning storms.",
       weight: 4,
       height: 60
-    },
-    loading: false
+    }
   };
 
   render() {
