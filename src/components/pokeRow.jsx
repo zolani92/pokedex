@@ -1,10 +1,6 @@
 import React from "react";
 
-const PokeRow = ({
-  pokemon: { id, name, types, likesCount },
-  onDisplay,
-  isDisabled
-}) => {
+const PokeRow = ({ pokemon: { id, name, types, likesCount } }) => {
   return (
     <tr>
       <td>{id}</td>
@@ -12,13 +8,7 @@ const PokeRow = ({
       <td>{types.join(", ")}</td>
       <td>{likesCount || 0}</td>
       <td>
-        <button
-          className="btn btn-secondary"
-          onClick={onDisplay}
-          disabled={isDisabled}
-        >
-          Display
-        </button>
+        <button className="btn btn-secondary">Display</button>
       </td>
     </tr>
   );

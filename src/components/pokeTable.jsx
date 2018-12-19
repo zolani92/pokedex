@@ -1,14 +1,9 @@
 import React from "react";
 import PokeRow from "./pokeRow";
 
-const PokeTable = ({ pokemons, selectedPokemon, onDisplay }) => {
+const PokeTable = ({ pokemons }) => {
   let pokemonRows = pokemons.map(pokemon => (
-    <PokeRow
-      key={pokemon.id}
-      pokemon={pokemon}
-      onDisplay={() => onDisplay(pokemon.id)}
-      isDisabled={selectedPokemon ? selectedPokemon.id === pokemon.id : false}
-    />
+    <PokeRow key={pokemon.id} pokemon={pokemon} />
   ));
 
   return (

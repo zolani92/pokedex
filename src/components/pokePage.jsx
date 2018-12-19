@@ -1,41 +1,52 @@
 import React from "react";
-import Description from "./common/description";
 
 const formatTitleInfo = pokemon =>
   `#${pokemon.id}: ${pokemon.name.toUpperCase()}`;
 
 const formatSubTitleInfo = pokemon => {
   const { types, height, weight } = pokemon;
-  const typeTitle = types.length > 1 ? "Types" : "Type";
-
-  return `${typeTitle}: ${types.join(
-    ", "
-  )} - Height: ${height} - Weight: ${weight}`;
+  return `Types: ${types.join(", ")} - Height: ${height} - Weight: ${weight}`;
 };
 
 const PokePage = ({ pokemon, onDelete, onLike }) => {
   if (pokemon) {
     const image = {
-      src: pokemon.image.uri,
+      src: pokemon.image,
       alt: pokemon.name,
       width: 200,
       height: 200
     };
 
     return (
-      <Description
-        image={image}
-        title={formatTitleInfo(pokemon)}
-        subtitle={formatSubTitleInfo(pokemon)}
-        text={pokemon.description}
+      <div
+        className="card border-light text-center"
+        style={{
+          alignItems: "center"
+        }}
       >
-        <button className="btn btn-danger m-2" onClick={onDelete}>
-          Delete
-        </button>
-        <button className="btn btn-primary" onClick={onLike}>
-          Like
-        </button>
-      </Description>
+        <img
+          className="card-img-top"
+          src={image.src}
+          alt={image.alt}
+          style={{
+            width: image.width,
+            height: image.height
+          }}
+        />
+        <div className="card-body">
+          <h5 className="card-title">{formatTitleInfo(pokemon)}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">
+            {formatSubTitleInfo(pokemon)}
+          </h6>
+          <p className="card-text">{pokemon.description}</p>
+          <button className="btn btn-danger m-2" onClick={onDelete}>
+            Delete
+          </button>
+          <button className="btn btn-primary" onClick={onLike}>
+            Like
+          </button>
+        </div>
+      </div>
     );
   } else return false;
 };
